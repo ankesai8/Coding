@@ -1,0 +1,52 @@
+// Node Js program
+// Remove consecutive vowels from string
+Output
+Before : quick search your destination
+After : quck serch yor destinatin
+
+
+class MyString
+{
+	is_vowel(text, location)
+	{
+		if (text[location] == 'a' 
+            || text[location] == 'e' 
+            || text[location] == 'i' 
+            || text[location] == 'o' 
+            || text[location] == 'u')
+		{
+			return true;
+		}
+		return false;
+	}
+	remove_consecutive_vowels(text)
+	{
+		var size = text.length;
+		if (size <= 0)
+		{
+			return text;
+		}
+		var result = "";
+		result += text[0];
+		for (var i = 1; i < size; i++)
+		{
+			if (!(this.is_vowel(text, i - 1) && this.is_vowel(text, i)))
+			{
+				//When no two consecutive vowels are not exist
+				result += text[i];
+			}
+		}
+		return result;
+	}
+}
+
+function main()
+{
+	var obj = new MyString();
+	var text = "quick search your destination";
+	
+    text = obj.remove_consecutive_vowels(text);
+    console.log("\n" + text);
+
+}
+main();
