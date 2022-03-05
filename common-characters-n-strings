@@ -1,0 +1,66 @@
+Input :  geeksforgeeks
+         gemkstones
+         acknowledges
+         aguelikes
+         
+         
+
+Output : e g k s
+
+
+Input :  apple 
+         orange
+
+Output : a e
+
+
+
+
+
+
+
+
+
+const MAX_CHAR = 26
+ 
+function commonCharacters(strings, n) {
+     
+    // primary array for common characters
+    // we assume all characters are seen before.
+    let prim = new Array(MAX_CHAR).fill(true)
+     
+    // for each strings
+    for(let i = 0; i < n; i++){
+         
+        // secondary array for common characters
+        // Initially marked false
+        let sec = new Array(MAX_CHAR).fill(false)
+ 
+        // for every character of ith strings
+        for(let j = 0; j < strings[i].length; j++){
+ 
+            // if character is present in all
+            // strings before, mark it.
+            if (prim[strings[i].charCodeAt(j) - ('a').charCodeAt(0)])
+                sec[strings[i].charCodeAt(j) - ('a').charCodeAt(0)] = true
+        }
+ 
+        // copy whole secondary array
+        // into primary
+        for(let i = 0; i < MAX_CHAR; i++){
+            prim[i] = sec[i]
+        }
+    }
+ 
+    // displaying common characters
+    for(let i = 0; i < 26; i++){
+        if (prim[i])
+            document.write(String.fromCharCode(i +('a').charCodeAt(0))," ")
+    }
+}
+ 
+// Driver's Code
+let strings = [ "geeksforgeeks", "gemkstones",
+            "acknowledges", "aguelikes" ]
+let n = strings.length
+commonCharacters(strings, n)
