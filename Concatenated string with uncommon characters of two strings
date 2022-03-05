@@ -1,0 +1,42 @@
+Input : S1 = "aacdb"
+        S2 = "gafd"
+Output : "cbgf"
+
+
+Input : S1 = "abcs";
+        S2 = "cxzca";
+Output : "bsxz"
+
+
+
+function concatenetedString(s1, s2)
+{
+    let res = ""; // result
+ 
+    // store all characters of s2 in map
+    let m = new Map();
+    for (let i = 0; i < s2.length; i++)
+        m.set(s2[i],1);
+ 
+    // Find characters of s1 that are not
+    // present in s2 and append to result
+    for (let i = 0; i < s1.length; i++) {
+        if (m.has(s1[i]) == false)
+            res += s1[i];
+        else
+            m.set(s1[i] , 2);
+    }
+ 
+    // Find characters of s2 that are not
+    // present in s1.
+    for (let i = 0; i < s2.length; i++)
+        if (m.get(s2[i]) == 1)
+            res += s2[i];
+    return res;
+}
+ 
+/* Driver program to test above function */
+let s1 = "abcs";
+let s2 = "cxzca";
+console.log(concatenetedString(s1, s2));
+ 
