@@ -1,0 +1,53 @@
+Input: str1 = “characters”, str2 = “alphabets” 
+Output: b c l p r
+
+Input: str1 = “geeksforgeeks”, str2 = “geeksquiz” 
+Output: f i o q r u z  
+
+
+
+function printUncommon(str1, str2)
+{
+    var a1 = 0, a2 = 0;
+    for (var i = 0; i < str1.length; i++) {
+ 
+        // Converting character to ASCII code
+        var ch = (str1[i].charCodeAt(0)) - 'a'.charCodeAt(0);
+ 
+        // Bit operation
+        a1 = a1 | (1 << ch);
+    }
+    for (var i = 0; i < str2.length; i++) {
+ 
+        // Converting character to ASCII code
+        var ch = (str2[i].charCodeAt(0)) - 'a'.charCodeAt(0);
+ 
+        // Bit operation
+        a2 = a2 | (1 << ch);
+    }
+ 
+    // XOR operation leaves only uncommon
+    // characters in the ans variable
+    var ans = a1 ^ a2;
+ 
+    var i = 0;
+    while (i < 26) {
+        if (ans % 2 == 1) {
+            document.write( String.fromCharCode('a'.charCodeAt(0) + i));
+        }
+        ans = parseInt(ans / 2);
+        i++;
+    }
+}
+ 
+// Driver code
+var str1 = "geeksforgeeks";
+var str2 = "geeksquiz";
+printUncommon(str1, str2);
+
+
+
+
+
+
+Time Complexity: O(|str1| + |str2| + 26)Auxiliary Space: O(1)
