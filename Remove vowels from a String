@@ -23,8 +23,7 @@ function remVowel(str)
     }
     return result;
 }
- 
-// Driver code
 let str = "GeeeksforGeeks - A Computer Science " +
           "Portal for Geeks";
-document.write(remVowel(str));
+console.log(remVowel(str));
+ 
