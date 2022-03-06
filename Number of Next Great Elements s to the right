@@ -1,0 +1,113 @@
+function fillNext(next,a,n)
+{
+    // Use stack
+    let s = [];
+  
+    // push the 0th index to the stack
+    s.push(0);
+  
+    // traverse in the loop from 1-nth index
+    for (let i = 1; i < n; i++)
+    {
+  
+        // iterate till loop is empty
+        while (s.length > 0)
+        {
+  
+            // get the topmost index in the stack
+            let cur = s[s.length-1];
+  
+            // if the current element is greater
+            // then the top index-th element, then
+            // this will be the next greatest index
+            // of the top index-th element
+            if (a[cur] < a[i])
+            {
+  
+                // initialize the cur index position's
+                // next greatest as index
+                next[cur] = i;
+  
+                // pop the cur index as its greater
+                // element has been found
+                s.pop();
+            }
+  
+            // if not greater then break
+            else
+                break;
+        }
+  
+        // push the i index so that its next greatest
+        // can be found
+        s.push(i);
+    }
+  
+    // iterate for all other index left inside stack
+    while (s.length > 0)
+    {
+  
+        let cur = s[s.length-1];
+  
+        // mark it as -1 as no element in greater
+        // then it in right
+        next[cur] = -1;
+  
+        s.pop();
+    }
+}
+ 
+// function to count the number of
+// next greater numbers to the right
+function count(a,dp,n)
+{
+    // initializes the next array as 0
+    let next = new Array(n);
+    for(let i = 0; i < n; i++)
+        next[i] = 0;
+      
+    // calls the function to pre-calculate
+    // the next greatest element indexes
+    fillNext(next, a, n);
+  
+    for (let i = n - 2; i >= 0; i--)
+    {
+  
+        // if the i-th element has no next
+        // greater element to right
+        if (next[i] == -1)
+            dp[i] = 0;
+  
+        // Count of next greater numbers to right.
+        else
+            dp[i] = 1 + dp[next[i]];
+    }
+}
+ 
+// answers all queries in O(1)
+function answerQuery(dp,index)
+{
+    // returns the number of next greater
+    // elements to the right.
+    return dp[index];
+}
+ 
+// driver code
+let a=[3, 4, 2, 7, 5, 8, 10, 6 ];
+let n = a.length;
+let dp=new Array(n);
+ 
+// calls the function to count the number
+// of greater elements to the right for
+// every element.
+count(a, dp, n);
+ 
+// query 1 answered
+document.write(answerQuery(dp, 3)+"<br>");
+ 
+// query 2 answered
+document.write( answerQuery(dp, 6)+"<br>");
+ 
+// query 3 answered
+document.write( answerQuery(dp, 1) +"<br>");
+ 
