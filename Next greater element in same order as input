@@ -1,0 +1,39 @@
+function printNGE(arr, n)
+{
+    let s = [];
+    let arr1 = new Array(n);
+     
+    // Iterating from n-1 to 0
+    for (let i = n - 1; i >= 0; i--)
+    {
+         
+        // We will pop till we get the
+        // greater element on top or
+        // stack gets empty
+        while (!s.length == 0 &&
+              s[s.length - 1] <= arr[i])
+            s.pop();
+     
+        // If stack gots empty means there
+        // is no element on right which is greater
+        // than the current element.
+        // if not empty then the next greater
+        // element is on top of stack
+        if (s.length == 0)
+            arr1[i] = -1;        
+        else
+            arr1[i] = s[s.length - 1];        
+     
+        s.push(arr[i]);
+    }
+    for(let i = 0; i < n; i++)
+        console.log(arr[i] + " ---> " +
+                      arr1[i] + "<br>");
+}
+ 
+// Driver code
+let arr = [ 11, 13, 21, 3 ];
+let n = arr.length;
+ 
+printNGE(arr, n);
+ 
