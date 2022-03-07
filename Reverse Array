@@ -1,0 +1,20 @@
+function reverseArray(){
+ let i=0;
+ let j=array.length-1;
+ let temp;
+ 
+ while(i<j){
+ temp=arr[i];
+ arr[i]=arr[j];
+ arr[j]=temp;
+ 
+ i++;
+ 
+ j--;
+ 
+ }
+ return arr;
+}
+ console.log(reverseArray[1,2,3,4,5]);
+ 
+ 
