@@ -1,0 +1,3 @@
+let uniqueCharacterExtractor = (string) => Array.from(new Set(string.split(''))).reduce((acc, element) => acc + element);
+
+console.log(uniqueCharacterExtractor("thequicccccccccccccccccccccccccccccccceeeeeeeeeeeeeeeeeeeeekbrownfoxjumpsoverthelazydog"))
