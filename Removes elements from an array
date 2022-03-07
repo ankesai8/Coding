@@ -1,0 +1,9 @@
+const remove = (array, func) =>
+  Array.isArray(array)
+    ? array.filter(func).reduce((acc, val) => {
+      array.splice(array.indexOf(val), 1);
+      return acc.concat(val);
+    }, [])
+    : [];
+
+console.log(remove([1, 2, 3, 4], n => n % 2 === 0)); // [2, 4]
