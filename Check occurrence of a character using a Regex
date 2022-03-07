@@ -1,0 +1,17 @@
+// program to check the occurrence of a character
+
+function countString(str, letter) {
+
+    // creating regex 
+    const re = new RegExp(letter, 'g');
+
+    // matching the pattern
+    const count = str.match(re).length;
+
+    return count;
+}
+
+// take input from the user
+const string = ('Enterrrrrrrr a strrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrring');
+const letterToCheck = ('r');
+console.log(countString(string, letterToCheck) );
