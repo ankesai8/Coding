@@ -1,0 +1,43 @@
+Input: x = 123 
+Output : Yes 
+The k-cyclic shifts of 123 are 312 for k=1 and 231 for k=2. 
+Both 312 and 231 are greater than 123.
+Input: 2214 
+Output: No 
+The k-cyclic shift of 2214 when k=2 is 1422 which is smaller than 2214 
+ 
+ 
+ function CheckKCycles(n, s)
+{
+    var ff = true;
+    var x = 0;
+    for (i = 1; i < n; i++)
+    {
+ 
+        // Splitting the number at index i
+        // and adding to the front
+        x = (s.substring(i) + s.substring(0, i)).length;
+ 
+        // Checking if the value is greater than
+        // or equal to the given value
+        if (x >= s.length)
+        {
+            continue;
+        }
+        ff = false;
+        break;
+    }
+    if (ff)
+    {
+        console.log("Yes");
+    }
+    else
+    {
+        console.log("No");
+    }
+}
+ 
+// Driver code
+    var n = 3;
+    var s = "123";
+   console.log(CheckKCycles(n, s));
